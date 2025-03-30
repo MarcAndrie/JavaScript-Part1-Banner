@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bucket List</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+    button {
+      width: 200px;
+      height: 100px;
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+    #content {
+      margin: 10px;
+    }
+    .container {
+      border-style: solid;
+      background-color: #aaf0d1;
+      height: auto;
+      width: 700px;
+      margin-top: 10px;
+    }
+    .button-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div id="content-list">
+      <h2 id="title">Hi there! I'm Andrie Pabello.</h2>
+      <h3>Please Enter Bucket List</h3>
+      <ul id="bucketList">
+        <li>Make A Super Baby</li>
+      </ul>
+    </div>
+  </div>
+  <!-- Input Field -->
+  <p>Add New: <input type="text" id="newItem" placeholder="add new here"></p>
+  <!-- Buttons with new functions -->
+  <div class="button-container">
+    <button id="addItemButton" onclick="addNewElement()">Add new item on the bucket list</button>
+    <button id="changeFontButton" onclick="changeFontFamily()">Change font family of the items</button>
+    <button id="makeBoldButton" onclick="makeItemsBold()">Make list items bold</button>
+  </div>
+  <script>
+    // Function to add a new list item from the input field value
+    function addNewElement() {
+      var newItem = document.getElementById("newItem").value;
+      if (newItem.trim() !== "") {
+        var li = document.createElement("li");
+        li.textContent = newItem;
+        document.getElementById("bucketList").appendChild(li);
+        document.getElementById("newItem").value = "";
+      } else {
+        alert("Please enter a value to add.");
+      }
+    }
+
+    // Function to change the font family of all list items (toggle between Arial and Times New Roman)
+    function changeFontFamily() {
+      var listItems = document.querySelectorAll("#bucketList li");
+      listItems.forEach(function(item) {
+        item.style.fontFamily = item.style.fontFamily === "Times New Roman" ? "Arial" : "Times New Roman";
+      });
+    }
+
+    // Function to toggle bold styling on the list items
+    function makeItemsBold() {
+      var listItems = document.querySelectorAll("#bucketList li");
+      listItems.forEach(function(item) {
+        item.style.fontWeight = item.style.fontWeight === "bold" ? "normal" : "bold";
+      });
+    }
+  </script>
+</body>
+</html>
